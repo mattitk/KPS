@@ -1,4 +1,4 @@
-
+#include "includes.h"
 #include "bot_interface.h"
 #include "students/MY_BOT_kauppila.h"
 #include "students/MY_BOT_kauppila2.h"
@@ -43,7 +43,7 @@ int main()
 				);
 
 #ifdef WAIT_FOR_KEYPRESS
-			getch();
+			//getch();
 #endif
 
 			// Play the rounds.

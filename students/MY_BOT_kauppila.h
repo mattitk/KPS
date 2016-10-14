@@ -1,15 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <conio.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <algorithm>
-#include <map>
-#include <string>
+#include "../includes.h"
 
 #include "route.h"
 #include "../bot_interface.h"
@@ -45,9 +36,11 @@ public:
 	virtual void set_value(signed int value){
 		_r.SetValue(value);
 
-		// learning...........
+		// learning.....
 		for(ConnectionCursor c : _r.getConnections()){
 			_c[c.a][c.b][c.row] += value;
+			if (_c[c.a][c.b][c.row] > CHARGE_MAX) _c[c.a][c.b][c.row] = CHARGE_MAX;
+			else if (_c[c.a][c.b][c.row] < CHARGE_MAX) _c[c.a][c.b][c.row] = -CHARGE_MAX;
 		}
 		printf("\nValue set! value %d\n", value);
 		write_connections();
@@ -131,7 +124,7 @@ public:
 		for(int i=0;i<9;i++)
 			for(int j=0;j<9;j++)
 				for(int k=0;k<999;k++)
-					_c[i][j][k] = INITIAL_CHARGE;
+					_c[i][j][k] = rand()%INITIAL_CHARGE;
 	}
 
 	void load_connections(){

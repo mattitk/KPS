@@ -1,15 +1,7 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <conio.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <algorithm>
-#include <map>
-#include <string>
+
+#include "../includes.h"
 
 #include "route.h"
 
@@ -88,7 +80,7 @@ public:
 		int best_x=0;
 		int best_value = 0;
 		for(int x=0;x<9;x++){
-			if(_c[col][x][round-1]+ rand()%32 > best_value){
+			if(_c[col][x][round-1] > best_value){
 				best_value = _c[col][x][round-1];
 				best_x = x;
 			}
@@ -133,7 +125,7 @@ public:
 		for(int i=0;i<9;i++)
 			for(int j=0;j<9;j++)
 				for(int k=0;k<999;k++)
-					_c[i][j][k] = INITIAL_CHARGE;
+					_c[i][j][k] = rand()%INITIAL_CHARGE;
 	}
 
 	signed int load_connections(){
