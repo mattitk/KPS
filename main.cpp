@@ -4,7 +4,7 @@
 #include "students/MY_BOT_kauppila2.h"
 
 #define NOF_BOTS 2
-#define NOF_TOURS 10
+#define NOF_TOURS 100
 // #define WAIT_FOR_KEYPRESS
 
 Bot* create_bot(int);				// Create a new bot object.
