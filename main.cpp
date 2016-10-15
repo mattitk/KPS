@@ -4,7 +4,7 @@
 #include "students/MY_BOT_kauppila2.h"
 
 #define NOF_BOTS 2
-#define NOF_TOURS 100
+#define NOF_TOURS 10
 // #define WAIT_FOR_KEYPRESS
 
 Bot* create_bot(int);				// Create a new bot object.
@@ -68,21 +68,21 @@ int main()
 			std::string winner;
 			if (blue_score > red_score)
 			{
-				winner = "won by " + blue->get_name();
-				if(blue->get_name() == "oLLi2")
+				winner = "won by " + blue->get_name();/*
+				if(blue->am_i_learning())
 					blue->set_value(blue_score - red_score);
-				else if(red->get_name() == "oLLi2")
+				else if(red->am_i_learning())
 					red->set_value(red_score - blue_score);
-						
+						*/
 				tour_score[i] += 1.0;
 			}
 			else if (red_score > blue_score)
 			{
 				winner = "won by " + red->get_name();
-				if(red->get_name() == "oLLi2")
+			/*	if(red->am_i_learning())
 					red->set_value(red_score - blue_score);
-				else if(blue->get_name() == "oLLi2")
-					blue->set_value(blue_score - red_score);
+				else if(blue->am_i_learning())
+					blue->set_value(blue_score - red_score);*/
 				tour_score[j] += 1.0;
 			}
 			else

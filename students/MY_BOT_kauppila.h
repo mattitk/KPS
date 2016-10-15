@@ -28,9 +28,9 @@ public:
 	signed long _c[9][9][999];
 	Route _r;
 
-	oLLi2(){
+	My_bot_kauppila(){
 		init();
-		load_connections();
+		if(!load_connections()) write_connections();
 	}
 
 	virtual void set_value(signed int value){
@@ -45,6 +45,11 @@ public:
 		printf("\nValue set! value %d\n", value);
 		write_connections();
 		//getch();
+	}
+
+
+	virtual bool am_i_learning(){
+		return true;
 	}
 
 	virtual std::string get_name(){
@@ -127,13 +132,15 @@ public:
 					_c[i][j][k] = rand()%INITIAL_CHARGE;
 	}
 
-	void load_connections(){
+	bool load_connections(){
 		FILE *f = fopen("oLLi2.connections", "r");
+		if(!f) return false;
 		for(int i=0;i<9;i++)
 			for(int j=0;j<9;j++)
 				for(int k=0;k<999;k++)
-						fscanf(f, "%d\n", _c[i][j][k]);
+						fscanf(f, "%ld\n", &_c[i][j][k]);
 		fclose(f);
+		return true;
 	}
 
 
@@ -142,7 +149,7 @@ public:
 		for(int i=0;i<9;i++)
 			for(int j=0;j<9;j++)
 				for(int k=0;k<999;k++)
-						fprintf(f, "%d\n", _c[i][j][k]);
+						fprintf(f, "%ld\n", _c[i][j][k]);
 		fclose(f);
 	}
 

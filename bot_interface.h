@@ -24,6 +24,7 @@ public:
 	virtual int get_throw(int round) = 0;
 
 	virtual void set_value(signed int value) {};
+	virtual bool am_i_learning(){ return false; }
 
 	// Opponent's throws on previous rounds.
 	// Your bot can study these in get_throw(),

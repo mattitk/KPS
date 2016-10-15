@@ -31,9 +31,13 @@ public:
 	signed long _c[9][9][999];
 	Route _r;
 
-	oLLi2(){
+	My_bot_kauppila2(){
 		init();
 		if(!load_connections()) write_connections();
+	}
+
+	virtual bool am_i_learning(){
+		return true;
 	}
 
 	virtual void set_value(signed int value){
@@ -134,7 +138,7 @@ public:
 		for(int i=0;i<9;i++)
 			for(int j=0;j<9;j++)
 				for(int k=0;k<999;k++)
-						fscanf(f, "%d\n", _c[i][j][k]);
+						fscanf(f, "%ld\n", &_c[i][j][k]);
 		fclose(f);
 	}
 
@@ -144,7 +148,7 @@ public:
 		for(int i=0;i<9;i++)
 			for(int j=0;j<9;j++)
 				for(int k=0;k<999;k++)
-						fprintf(f, "%d\n", _c[i][j][k]);
+						fprintf(f, "%ld\n", _c[i][j][k]);
 		fclose(f);
 	}
 
